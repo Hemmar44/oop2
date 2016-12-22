@@ -1,30 +1,27 @@
 <?php
 
-class User {
+class People {
+    public $person1 = "Marcin";
+    public $person2 = "Agnieszka";
+    public $person3 = "Ania";
+    protected $person4 = "Maja";
+    private $person5 = "Hipo";
     
-    public $username;
-    public static $minPassLength = 5;
-    
-    public static function validatePassword($password) {
-        if(strlen($password) >= self::$minPassLength){
-            return true;
-        }
-        else {
-            return false;
+    public function iterateObject() {
+        foreach ($this as $key => $value) {
+            echo "$key => $value<br/>";
         }
     }
 }
-/*
-$password = "passsss";
 
-if(User::validatePassword($password)){
-    echo "Password is valid";
-}
-else {
-    echo "Password is to short";
-}
- 
- */
+$all = new People;
+//this will not echo protected and private (not throwing error);
+foreach ($all as $key => $value) {
+            echo "$key => $value<br/>";
+ }
+ echo "<hr/>";
 
-echo User::$minPassLength;
+ //show all properties
+$all->iterateObject();
+
 ?>
